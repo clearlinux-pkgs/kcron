@@ -5,18 +5,18 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kcron
-Version  : 18.08.0
-Release  : 1
-URL      : https://download.kde.org/stable/applications/18.08.0/src/kcron-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/kcron-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/kcron-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 2
+URL      : https://download.kde.org/stable/applications/18.12.2/src/kcron-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/kcron-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/kcron-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: kcron-lib
-Requires: kcron-license
-Requires: kcron-data
-Requires: kcron-locales
+Requires: kcron-data = %{version}-%{release}
+Requires: kcron-lib = %{version}-%{release}
+Requires: kcron-license = %{version}-%{release}
+Requires: kcron-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 
@@ -48,8 +48,8 @@ doc components for the kcron package.
 %package lib
 Summary: lib components for the kcron package.
 Group: Libraries
-Requires: kcron-data
-Requires: kcron-license
+Requires: kcron-data = %{version}-%{release}
+Requires: kcron-license = %{version}-%{release}
 
 %description lib
 lib components for the kcron package.
@@ -72,25 +72,25 @@ locales components for the kcron package.
 
 
 %prep
-%setup -q -n kcron-18.08.0
+%setup -q -n kcron-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535195633
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549864238
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535195633
+export SOURCE_DATE_EPOCH=1549864238
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kcron
-cp COPYING %{buildroot}/usr/share/doc/kcron/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/kcron
+cp COPYING %{buildroot}/usr/share/package-licenses/kcron/COPYING
 pushd clr-build
 %make_install
 popd
@@ -102,6 +102,7 @@ popd
 %files data
 %defattr(-,root,root,-)
 /usr/share/kservices5/kcm_cron.desktop
+/usr/share/xdg/kcron.categories
 
 %files doc
 %defattr(0644,root,root,0755)
@@ -172,8 +173,8 @@ popd
 /usr/lib64/qt5/plugins/kcm_cron.so
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kcron/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kcron/COPYING
 
 %files locales -f kcron.lang
 %defattr(-,root,root,-)
