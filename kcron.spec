@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kcron
-Version  : 18.12.3
-Release  : 5
-URL      : https://download.kde.org/stable/applications/18.12.3/src/kcron-18.12.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.3/src/kcron-18.12.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.3/src/kcron-18.12.3.tar.xz.sig
+Version  : 19.04.0
+Release  : 6
+URL      : https://download.kde.org/stable/applications/19.04.0/src/kcron-19.04.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.0/src/kcron-19.04.0.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.0/src/kcron-19.04.0.tar.xz.sig
 Summary  : Configure and schedule tasks
 Group    : Development/Tools
 License  : GPL-2.0
@@ -72,14 +72,14 @@ locales components for the kcron package.
 
 
 %prep
-%setup -q -n kcron-18.12.3
+%setup -q -n kcron-19.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555325456
+export SOURCE_DATE_EPOCH=1555604735
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -87,7 +87,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1555325456
+export SOURCE_DATE_EPOCH=1555604735
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kcron
 cp COPYING %{buildroot}/usr/share/package-licenses/kcron/COPYING
@@ -108,9 +108,6 @@ popd
 %defattr(0644,root,root,0755)
 /usr/share/doc/HTML/ca/kcontrol5/kcron/index.cache.bz2
 /usr/share/doc/HTML/ca/kcontrol5/kcron/index.docbook
-/usr/share/doc/HTML/ca/kcontrol5/kcron/kcronstart.png
-/usr/share/doc/HTML/ca/kcontrol5/kcron/newtask.png
-/usr/share/doc/HTML/ca/kcontrol5/kcron/newvariable.png
 /usr/share/doc/HTML/de/kcontrol5/kcron/index.cache.bz2
 /usr/share/doc/HTML/de/kcontrol5/kcron/index.docbook
 /usr/share/doc/HTML/de/kcontrol5/kcron/kcronstart.png
