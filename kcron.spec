@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kcron
-Version  : 19.04.2
-Release  : 9
-URL      : https://download.kde.org/stable/applications/19.04.2/src/kcron-19.04.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.2/src/kcron-19.04.2.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.2/src/kcron-19.04.2.tar.xz.sig
+Version  : 19.04.3
+Release  : 10
+URL      : https://download.kde.org/stable/applications/19.04.3/src/kcron-19.04.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.3/src/kcron-19.04.3.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.3/src/kcron-19.04.3.tar.xz.sig
 Summary  : Configure and schedule tasks
 Group    : Development/Tools
 License  : GPL-2.0
@@ -72,16 +72,17 @@ locales components for the kcron package.
 
 
 %prep
-%setup -q -n kcron-19.04.2
+%setup -q -n kcron-19.04.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1559886367
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562866698
 mkdir -p clr-build
 pushd clr-build
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -90,11 +91,11 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1559886367
+export SOURCE_DATE_EPOCH=1562866698
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kcron
 cp COPYING %{buildroot}/usr/share/package-licenses/kcron/COPYING
@@ -127,9 +128,6 @@ popd
 /usr/share/doc/HTML/en/kcontrol5/kcron/newvariable.png
 /usr/share/doc/HTML/es/kcontrol5/kcron/index.cache.bz2
 /usr/share/doc/HTML/es/kcontrol5/kcron/index.docbook
-/usr/share/doc/HTML/es/kcontrol5/kcron/kcronstart.png
-/usr/share/doc/HTML/es/kcontrol5/kcron/newtask.png
-/usr/share/doc/HTML/es/kcontrol5/kcron/newvariable.png
 /usr/share/doc/HTML/es/kcontrol5/kcron/print.png
 /usr/share/doc/HTML/et/kcontrol5/kcron/index.cache.bz2
 /usr/share/doc/HTML/et/kcontrol5/kcron/index.docbook
