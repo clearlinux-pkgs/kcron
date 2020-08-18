@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kcron
-Version  : 20.04.2
-Release  : 21
-URL      : https://download.kde.org/stable/release-service/20.04.2/src/kcron-20.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.2/src/kcron-20.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.2/src/kcron-20.04.2.tar.xz.sig
+Version  : 20.08.0
+Release  : 22
+URL      : https://download.kde.org/stable/release-service/20.08.0/src/kcron-20.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.08.0/src/kcron-20.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.08.0/src/kcron-20.08.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -72,15 +72,15 @@ locales components for the kcron package.
 
 
 %prep
-%setup -q -n kcron-20.04.2
-cd %{_builddir}/kcron-20.04.2
+%setup -q -n kcron-20.08.0
+cd %{_builddir}/kcron-20.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591906643
+export SOURCE_DATE_EPOCH=1597778366
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -92,14 +92,14 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1591906643
+export SOURCE_DATE_EPOCH=1597778366
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kcron
-cp %{_builddir}/kcron-20.04.2/COPYING %{buildroot}/usr/share/package-licenses/kcron/d357e60aa8efd63b4475c3363700ba54f9a71343
+cp %{_builddir}/kcron-20.08.0/COPYING %{buildroot}/usr/share/package-licenses/kcron/d357e60aa8efd63b4475c3363700ba54f9a71343
 pushd clr-build
 %make_install
 popd
@@ -142,6 +142,8 @@ popd
 /usr/share/doc/HTML/fr/kcontrol5/kcron/print.png
 /usr/share/doc/HTML/it/kcontrol5/kcron/index.cache.bz2
 /usr/share/doc/HTML/it/kcontrol5/kcron/index.docbook
+/usr/share/doc/HTML/ko/kcontrol5/kcron/index.cache.bz2
+/usr/share/doc/HTML/ko/kcontrol5/kcron/index.docbook
 /usr/share/doc/HTML/nl/kcontrol5/kcron/index.cache.bz2
 /usr/share/doc/HTML/nl/kcontrol5/kcron/index.docbook
 /usr/share/doc/HTML/nl/kcontrol5/kcron/newtask.png
@@ -171,6 +173,8 @@ popd
 /usr/share/doc/HTML/uk/kcontrol5/kcron/kcronstart.png
 /usr/share/doc/HTML/uk/kcontrol5/kcron/newtask.png
 /usr/share/doc/HTML/uk/kcontrol5/kcron/newvariable.png
+/usr/share/doc/HTML/zh_CN/kcontrol5/kcron/index.cache.bz2
+/usr/share/doc/HTML/zh_CN/kcontrol5/kcron/index.docbook
 
 %files lib
 %defattr(-,root,root,-)
