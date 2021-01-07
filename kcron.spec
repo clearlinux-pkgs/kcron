@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kcron
-Version  : 20.12.0
-Release  : 25
-URL      : https://download.kde.org/stable/release-service/20.12.0/src/kcron-20.12.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.12.0/src/kcron-20.12.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.12.0/src/kcron-20.12.0.tar.xz.sig
+Version  : 20.12.1
+Release  : 26
+URL      : https://download.kde.org/stable/release-service/20.12.1/src/kcron-20.12.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.12.1/src/kcron-20.12.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.12.1/src/kcron-20.12.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -72,15 +72,15 @@ locales components for the kcron package.
 
 
 %prep
-%setup -q -n kcron-20.12.0
-cd %{_builddir}/kcron-20.12.0
+%setup -q -n kcron-20.12.1
+cd %{_builddir}/kcron-20.12.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1607713231
+export SOURCE_DATE_EPOCH=1610049958
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -96,10 +96,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1607713231
+export SOURCE_DATE_EPOCH=1610049958
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kcron
-cp %{_builddir}/kcron-20.12.0/COPYING %{buildroot}/usr/share/package-licenses/kcron/d357e60aa8efd63b4475c3363700ba54f9a71343
+cp %{_builddir}/kcron-20.12.1/COPYING %{buildroot}/usr/share/package-licenses/kcron/d357e60aa8efd63b4475c3363700ba54f9a71343
 pushd clr-build
 %make_install
 popd
